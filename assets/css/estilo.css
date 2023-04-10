@@ -102,37 +102,17 @@ body {
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.card {
-    margin: 2rem auto;
+#bijuucard {
+    margin: auto 0;
     align-content: center;
     text-align: center;
-    display: flex;
     
-}
-
-#personagem_card {
-    width: auto;
-    margin: 2rem 2rem 2rem 12rem;
-    border-radius: 1rem;
-    box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
-}
-
-#personagem {
-    background-color: #FAFAFA;
-    padding: 1rem;
-    border-radius: 1rem;
-}
-
-#imagemPersonagem {
-    border-radius: 1rem;
-}
-
-#quote_card {
-    width: 82vh;
-    margin: 5rem 2rem;
-    text-align: left;
 }
 
 .texto_quote {
     font-size: 20px;
+}
+
+.imagemBijuu {
+    width: 300px;
 }

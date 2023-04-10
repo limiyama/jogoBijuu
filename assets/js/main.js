@@ -1,55 +1,32 @@
-function buscarPersonagem () {
-    const url = "https://api.narutodb.xyz/tailed-beast/search?name=";
-    const procurar = document.getElementById('btnProcurar').value;
-    const nomePersonagem = document.getElementById('pesquisaNome').value;
+const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki", "Kurama" ]
 
-    console.log(nomePersonagem)
-    pegarInfo(url, nomePersonagem)
+function sortearBijuu() {
+  const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
+  return bijuuEscolhida;
 }
 
-function pegarInfo(url, nomePersonagem) {
-    fetch(url + nomePersonagem)
+function pegarInfo () {
+  const btn = document.getElementById('btnComecar').values;
+  const url = "https://api.narutodb.xyz/tailed-beast/search?name=";
+  const bijuu = sortearBijuu();
+
+  console.log(bijuu)
+
+  fetch(url + bijuu)
         .then(response => response.json())
             .then(data => {
-                personagem = data;
-                imgBijuu = personagem.images[1];
-                imgBijuu = imgBijuu.substring(0, imgBijuu.length - 14)
-                nameBijuu = personagem.name
+              personagem = data;
+              
+              imgBijuu = personagem.images[0];
+              imgBijuu = imgBijuu.substring(0, imgBijuu.length - 14)
+
+              console.log(imgBijuu, personagem.name)
+              card = `
+              <div id="card">
+                <img src="${imgBijuu}" class="imagemBijuu" crossorigin="anonymous" referrerPolicy="no-referrer">
+              </div>`;
+
+              bijuucard.innerHTML = card;
             })
         .catch(err =>console.log(err))
 }
-
-window.getPokeData = async function() {
-    const bijuu = await getBijuu();
-    const bijuuAleatoria = sortearBijuu();
-    console.log(bijuuAleatoria)
-    //const chute = document.getElementById('tentativa').values;
-    //const [ firstPokemon ] = pokemonChoices;
-    //const imagem = getBijuuImg(bijuuAleatoria);
-
-   // return { 
-     // pokemonChoices: shuffle(pokemonChoices),
-     // correct: {
-    //    image,
-    //    name: firstPokemon.name,
-    //  }
-   // };
-  };
-  
-  async function getBijuu() {
-    const res = await fetch('https://api.narutodb.xyz/tailed-beast');
-    const bijuu = await res.json();
-    
-    return bijuu;
-  }
-  
-  function sortearBijuu() {
-    const nomes = [ Shukaku, Matatabi, Isobu, Son Gokū, Kokuō, Saiken, Chōmei, Gyūki, Kurama ]
-    const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
-    console.log(bijuuEscolhida)
-  }
-  
-
-//  function get4Pokemon(randomPokemon) {
- //   return randomPokemon.splice(0, 4);
-//  }
