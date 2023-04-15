@@ -2,8 +2,37 @@ const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken",
 
 function sortearBijuu() {
   const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
-  return bijuuEscolhida;
+  console.log("Essa é a bijuu escolhida",bijuuEscolhida)
+  sortearOpcao(bijuuEscolhida)
 }
+
+function sortearOpcao(bijuu) {
+  const bijuu1 = nomes[Math.floor(nomes.length * Math.random())]
+  console.log("Bijuu inicial teste", bijuu1)
+
+  if (bijuu1 == bijuu) {
+    const bijuu1 = nomes[Math.floor(nomes.length * Math.random())]
+    console.log("A bijuu inicial era igual a escolhida, trocamo",bijuu1)
+  }
+  else {
+    const bijuu2 = nomes[Math.floor(nomes.length * Math.random())]
+    if (bijuu2 == bijuu1) {
+      const bijuu2 = nomes[Math.floor(nomes.length * Math.random())]
+      console.log("Segunda bijuu", bijuu2)
+    }
+    else {
+      const bijuu3 = nomes[Math.floor(nomes.length * Math.random())]
+      if (bijuu3 == bijuu1 || bijuu3 == bijuu2) {
+        const bijuu3 = nomes[Math.floor(nomes.length * Math.random())]
+        console.log("Terceira bijuu", bijuu3)
+      }
+      else {
+        console.log(bijuu1, bijuu2, bijuu3)      
+      }
+    }
+  }
+  
+}    
 
 function pegarInfo () {
   const btn = document.getElementById('btnComecar').values;
@@ -30,3 +59,4 @@ function pegarInfo () {
             })
         .catch(err =>console.log(err))
 }
+
