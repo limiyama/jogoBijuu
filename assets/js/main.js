@@ -2,11 +2,12 @@ const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken",
 
 function sortearBijuu() {
   const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
-  console.log("Essa é a bijuu escolhida",bijuuEscolhida)
-  sortearOpcao(bijuuEscolhida)
+  console.log("Essa é a bijuu escolhida", bijuuEscolhida)
+  sortearOpcoes(bijuuEscolhida)
+  pegarInfo(bijuuEscolhida)
 }
 
-function sortearOpcao(bijuu) {
+function sortearOpcoes(bijuu) {
   const nomesUsados = []
   nomesUsados.push(bijuu)
   console.log('Array nomes usados',nomesUsados)
@@ -24,14 +25,11 @@ function sortearOpcao(bijuu) {
   }
 }
 
-   
-
-function pegarInfo () {
+function pegarInfo (bijuu) {
   const btn = document.getElementById('btnComecar').values;
   const url = "https://api.narutodb.xyz/tailed-beast/search?name=";
-  const bijuu = sortearBijuu();
 
-  console.log(bijuu)
+  console.log("Pegando foto e nome da: ", bijuu)
 
   fetch(url + bijuu)
         .then(response => response.json())
@@ -45,6 +43,7 @@ function pegarInfo () {
               card = `
               <div id="card">
                 <img src="${imgBijuu}" class="imagemBijuu" crossorigin="anonymous" referrerPolicy="no-referrer">
+                <p class="pergunta"> Qual o nome dessa bijuu? </p>
               </div>`;
 
               bijuucard.innerHTML = card;

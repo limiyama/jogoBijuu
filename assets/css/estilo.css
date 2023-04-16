@@ -28,7 +28,7 @@ html {
 body {
     background-image: url("background.png");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 .nav {
@@ -103,16 +103,22 @@ body {
 }
 
 #bijuucard {
-    margin: auto 0;
-    align-content: center;
     text-align: center;
-    
 }
 
-.texto_quote {
-    font-size: 20px;
+#card {
+    background-color: var(--laranja-medio);
+    padding: 0.75rem;
+    margin: 0 auto;
+    width: 350px;
+    border-radius: 0.75rem;
 }
 
 .imagemBijuu {
     width: 300px;
+}
+
+.pergunta {
+    color: var(--fonte-color);
+    font-size: 1.25rem;
 }
