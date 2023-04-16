@@ -7,32 +7,24 @@ function sortearBijuu() {
 }
 
 function sortearOpcao(bijuu) {
-  const bijuu1 = nomes[Math.floor(nomes.length * Math.random())]
-  console.log("Bijuu inicial teste", bijuu1)
+  const nomesUsados = []
+  nomesUsados.push(bijuu)
+  console.log('Array nomes usados',nomesUsados)
 
-  if (bijuu1 == bijuu) {
-    const bijuu1 = nomes[Math.floor(nomes.length * Math.random())]
-    console.log("A bijuu inicial era igual a escolhida, trocamo",bijuu1)
-  }
-  else {
-    const bijuu2 = nomes[Math.floor(nomes.length * Math.random())]
-    if (bijuu2 == bijuu1) {
-      const bijuu2 = nomes[Math.floor(nomes.length * Math.random())]
-      console.log("Segunda bijuu", bijuu2)
-    }
-    else {
-      const bijuu3 = nomes[Math.floor(nomes.length * Math.random())]
-      if (bijuu3 == bijuu1 || bijuu3 == bijuu2) {
-        const bijuu3 = nomes[Math.floor(nomes.length * Math.random())]
-        console.log("Terceira bijuu", bijuu3)
-      }
-      else {
-        console.log(bijuu1, bijuu2, bijuu3)      
-      }
-    }
-  }
+  var index = nomes.indexOf(bijuu)
+  nomes.splice(index, 1)
+  console.log('Array com nomes nao usados', nomes)
   
-}    
+  for (var i = 0; i < 3; i++) {
+    const besta = nomes[Math.floor(nomes.length * Math.random())]
+    var x = nomes.indexOf(besta)
+    nomes.splice(x, 1)
+    nomesUsados.push(besta)
+    console.log(nomesUsados)
+  }
+}
+
+   
 
 function pegarInfo () {
   const btn = document.getElementById('btnComecar').values;
