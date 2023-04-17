@@ -23,13 +23,23 @@ function sortearOpcoes(bijuu) {
     nomesUsados.push(besta)
     console.log(nomesUsados)
   }
+  
+  pegarBtn(nomesUsados)
+}
+
+function pegarBtn(array) {
+  const opcoesHTML = []
+  for (var i in array) {
+    const botao = `<button data-name="${array[i]}" class="opcaoBijuu color">${array[i]}</button>`;
+    opcoesHTML.push(botao)
+    console.log(opcoesHTML)
+    opcoes.innerHTML = opcoesHTML;
+  }
 }
 
 function pegarInfo (bijuu) {
   const btn = document.getElementById('btnComecar').values;
   const url = "https://api.narutodb.xyz/tailed-beast/search?name=";
-
-  console.log("Pegando foto e nome da: ", bijuu)
 
   fetch(url + bijuu)
         .then(response => response.json())
@@ -50,4 +60,3 @@ function pegarInfo (bijuu) {
             })
         .catch(err =>console.log(err))
 }
-

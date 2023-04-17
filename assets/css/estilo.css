@@ -76,20 +76,21 @@ body {
     width: 200px;
     padding: 1rem 2rem;
     font-size: 16px;
-    color: #fff;
+    color: var(--branco);
     cursor: pointer;
     text-align:center;
     border: none;
     background-size: 300% 100%;
 
     border-radius: 50px;
+    
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
 
-.btn-hover:hover {
+.btn-hover:hover, .opcaoBijuu:hover {
     background-position: 100% 0;
     moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
@@ -97,7 +98,7 @@ body {
     transition: all .4s ease-in-out;
 }
 
-.btn-hover.color {
+.btn-hover.color, .opcaoBijuu.color {
     background-image: linear-gradient(to right, var(--laranja), var(--laranja-claro), var(--laranja-medio), var(--laranja));
     box-shadow: 3px 3px 3px 1px rgba(0, 0, 0, 0.2);
 }
@@ -121,4 +122,41 @@ body {
 .pergunta {
     color: var(--fonte-color);
     font-size: 1.25rem;
+}
+
+.opcaoBijuu {
+    margin: 0.75rem;
+    color: var(--fonte-color);
+    padding: 1rem;
+    width: 150px;
+    border-radius: 50px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+#opcoes {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+    .h1_text {
+        font-size: 1.5rem;
+    }
+    .p_text, .pergunta {
+        font-size: 0.75rem;
+    }
+    #card {
+        width: 275px;
+    }
+    .imagemBijuu {
+        width: 225px
+    }
 }
