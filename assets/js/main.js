@@ -1,13 +1,15 @@
 const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki" ];
+const textOverlay = document.querySelector('#text-overlay');
 
 async function jogar() {
   const bijuusAleatorias = shuffle(nomes)
   const quatroBijuus = getBijuu(bijuusAleatorias)
-  console.log(quatroBijuus)
+  console.log('Quatro bijuus escolhidas: ',quatroBijuus)
   const primeiraBijuu = quatroBijuus[0]
-  console.log(primeiraBijuu)
+  console.log('Bijuu escolhida para adivinhar: ',primeiraBijuu)
   getBtn(quatroBijuus)
   getInfo(primeiraBijuu)
+  checarResposta(primeiraBijuu)
 }
 
 function getBijuu(aleatorio) {
@@ -34,7 +36,6 @@ function getInfo(bijuu) {
               imgBijuu = personagem.images[0];
               imgBijuu = imgBijuu.substring(0, imgBijuu.length - 14)
 
-              console.log(imgBijuu, personagem.name)
               card = `
               <div id="card">
                 <img src="${imgBijuu}" class="imagemBijuu" crossorigin="anonymous" referrerPolicy="no-referrer">
@@ -48,11 +49,32 @@ function getInfo(bijuu) {
 
 function getBtn(array) {
   const btnAleatorio = shuffle(array)
-  console.log(btnAleatorio)
   const opcoesHTML = []
+
   for (var i in btnAleatorio) {
-    const botao = `<button data-name="${btnAleatorio[i]}" class="opcaoBijuu color">${btnAleatorio[i]}</button>`;
+    const botao = `<button id="${btnAleatorio[i]}" class="opcaoBijuu color">${btnAleatorio[i]}</button>`;
     opcoesHTML.push(botao)
     opcoes.innerHTML = opcoesHTML;
   }
+}
+
+function checarResposta(certaBijuu) {
+  var elementos = document.getElementById('opcoes');
+  elementos.addEventListener('click', function(e) {
+    idBtn = e.target.id
+    
+    if (idBtn === certaBijuu) {
+      console.log('acertou')
+    } else {
+      console.log('errou')
+    }
+  })
+}
+
+function respostaCerta() {
+  
+}
+
+function respostaErrada() {
+  
 }
