@@ -1,54 +1,29 @@
-const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki" ]
+const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki" ];
 
-function sortearBijuu() {
-  const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
-  console.log("Essa é a bijuu escolhida", bijuuEscolhida)
-  sortearOpcoes(bijuuEscolhida)
-  pegarInfo(bijuuEscolhida)
+async function jogar() {
+  const bijuusAleatorias = shuffle(nomes)
+  const quatroBijuus = getBijuu(bijuusAleatorias)
+  console.log(quatroBijuus)
+  const primeiraBijuu = quatroBijuus[0]
+  console.log(primeiraBijuu)
+  getBtn(quatroBijuus)
+  getInfo(primeiraBijuu)
 }
 
-function sortearOpcoes(bijuu) {
-  const nomesUsados = []
-  nomesUsados.push(bijuu)
-  console.log('Array nomes usados',nomesUsados)
-
-  var index = nomes.indexOf(bijuu)
-  nomes.splice(index, 1)
-  console.log('Array com nomes nao usados', nomes)
-  
-  for (var i = 0; i < 3; i++) {
-    const besta = nomes[Math.floor(nomes.length * Math.random())]
-    var x = nomes.indexOf(besta)
-    nomes.splice(x, 1)
-    nomesUsados.push(besta)
-    console.log(nomesUsados)
-  }
-  
-  pegarBtn(nomesUsados)
+function getBijuu(aleatorio) {
+  return aleatorio.splice(0, 4)
 }
 
-function pegarBtn(array) {
-  let x = array.length, r;
+function shuffle(unshuffled) {
+  const shuffled = unshuffled
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
   
-  while (x != 0) {
-    r = Math.floor(Math.random() * x);
-    x--;
-  
-    [array[x], array[r]] = [
-      array[r], array[x]];
-  }
-  
-  const opcoesHTML = []
-  for (var i in array) {
-    const botao = `<button data-name="${array[i]}" class="opcaoBijuu color">${array[i]}</button>`;
-    opcoesHTML.push(botao)
-    console.log(opcoesHTML)
-    opcoes.innerHTML = opcoesHTML;
-  }
+  return shuffled;
 }
 
-function pegarInfo (bijuu) {
-  const btn = document.getElementById('btnComecar').values;
+function getInfo(bijuu) {
   const url = "https://api.narutodb.xyz/tailed-beast/search?name=";
 
   fetch(url + bijuu)
@@ -69,4 +44,15 @@ function pegarInfo (bijuu) {
               bijuucard.innerHTML = card;
             })
         .catch(err =>console.log(err))
+}
+
+function getBtn(array) {
+  const btnAleatorio = shuffle(array)
+  console.log(btnAleatorio)
+  const opcoesHTML = []
+  for (var i in btnAleatorio) {
+    const botao = `<button data-name="${btnAleatorio[i]}" class="opcaoBijuu color">${btnAleatorio[i]}</button>`;
+    opcoesHTML.push(botao)
+    opcoes.innerHTML = opcoesHTML;
+  }
 }
