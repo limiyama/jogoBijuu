@@ -1,4 +1,4 @@
-const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki", "Kurama" ]
+const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki" ]
 
 function sortearBijuu() {
   const bijuuEscolhida = nomes[Math.floor(nomes.length * Math.random())];
@@ -28,6 +28,16 @@ function sortearOpcoes(bijuu) {
 }
 
 function pegarBtn(array) {
+  let x = array.length, r;
+  
+  while (x != 0) {
+    r = Math.floor(Math.random() * x);
+    x--;
+  
+    [array[x], array[r]] = [
+      array[r], array[x]];
+  }
+  
   const opcoesHTML = []
   for (var i in array) {
     const botao = `<button data-name="${array[i]}" class="opcaoBijuu color">${array[i]}</button>`;
