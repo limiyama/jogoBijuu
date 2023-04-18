@@ -70,11 +70,3 @@ function checarResposta(certaBijuu) {
     }
   })
 }
-
-function respostaCerta() {
-  
-}
-
-function respostaErrada() {
-  
-}
