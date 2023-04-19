@@ -1,5 +1,6 @@
 const nomes = [ "Shukaku", "Matatabi", "Isobu", "Son Gokū", "Kokuō", "Saiken", "Chōmei", "Gyūki" ];
-const textOverlay = document.querySelector('#text-overlay');
+const modal = document.getElementById("resposta_modal");
+
 
 async function jogar() {
   const bijuusAleatorias = shuffle(nomes)
@@ -64,7 +65,8 @@ function checarResposta(certaBijuu) {
     idBtn = e.target.id
     
     if (idBtn === certaBijuu) {
-      console.log('acertou')
+      console.log(modal)
+      modal.style.display = 'block'
     } else {
       console.log('errou')
     }
